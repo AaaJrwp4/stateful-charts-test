@@ -1,0 +1,14 @@
+# pv.yaml
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: www-data-pv
+spec:
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: standard # must match your PVC
+  persistentVolumeReclaimPolicy: Retain
+  hostPath:
+    path: /mnt/k8s-data/www-data # make sure this directory exists on the node
